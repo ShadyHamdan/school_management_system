@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:school_management_system/presentation/routes/app_routes.dart';
+import 'package:school_management_system/presentation/routes/route_generator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +17,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Scaffold(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: AppRoutes.splashScreen,
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

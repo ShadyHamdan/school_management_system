@@ -8,7 +8,7 @@ ThemeData englishThem = ThemeData(
       fontSize: 14,
       fontWeight: FontWeight.w900,
       height: 2,
-      color: greyBoldColor,
+      color: greyColor,
     ),
     displayLarge: TextStyle(
       fontSize: 25,

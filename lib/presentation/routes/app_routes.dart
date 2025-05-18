@@ -1,5 +1,7 @@
 class AppRoutes {
   static const String login = "/Login";
+  static const String splashScreen = "/SplashScreen";
+
   static String forgetPassword = "/ForgetPassword";
   static String mylanguage = "/Mylanguage";
   static String verifyCode = "/VerifyCode";
