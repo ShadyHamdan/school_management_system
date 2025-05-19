@@ -25,4 +25,5 @@ class AppRoutes {
   static String changepasswordprofile = "/ChangePasswordProfile";
   static String location = "/location";
   static String myLocation = "/MyLocation";
+  static const String homestudent = "/homestudent";
 }

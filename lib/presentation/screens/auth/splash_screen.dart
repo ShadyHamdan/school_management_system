@@ -9,7 +9,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final navigator = Navigator.of(context);
     Future.delayed(const Duration(seconds: 3), () {
-      navigator.pushReplacementNamed(AppRoutes.login);
+      navigator.pushReplacementNamed(AppRoutes.homestudent);
     });
     return Scaffold(
       body: Image.asset(
