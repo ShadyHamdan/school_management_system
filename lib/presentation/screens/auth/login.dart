@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:school_management_system/core/constants/color.dart';
-import 'package:school_management_system/core/constants/image_asset.dart';
+import 'package:school_management_system/presentation/cubits/auth/login/login_cubit.dart';
 import 'package:school_management_system/presentation/widgets/auth/custom_button_auth.dart';
+import 'package:school_management_system/presentation/widgets/auth/custom_snack_bar.dart';
+import 'package:school_management_system/presentation/widgets/login_widgets/appbar_image.dart';
+import 'package:school_management_system/presentation/widgets/login_widgets/appbar_titles.dart';
+import 'package:school_management_system/presentation/widgets/login_widgets/custom_email_field.dart';
+import 'package:school_management_system/presentation/widgets/login_widgets/custom_password_field.dart';
+import 'package:school_management_system/presentation/widgets/login_widgets/signup_text_button.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
     return Scaffold(
       backgroundColor: boldBlueColor,
       body: ListView(
         children: [
           SizedBox(
-            height: MediaQuery.sizeOf(context).height,
+            height: MediaQuery.sizeOf(context).height * 1.1,
             width: MediaQuery.sizeOf(context).width,
             child: Stack(
               children: [
@@ -24,7 +33,6 @@ class Login extends StatelessWidget {
                     width: MediaQuery.sizeOf(context).width,
                     decoration: BoxDecoration(
                       color: whiteColor,
-
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(35),
                         topRight: Radius.circular(35),
@@ -32,105 +40,72 @@ class Login extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 30, right: 50),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 160),
-                          Text('Email', style: TextStyle(color: greyColor)),
-                          Container(
-                            alignment: Alignment.center,
-                            width: 335,
-                            child: TextFormField(
-                              style: TextStyle(
-                                color: darkBlueGrayColor,
-                                fontSize: 16,
+                      child: BlocConsumer<LoginCubit, LoginState>(
+                        listener: (context, state) {
+                          if (state is LoginError) {
+                            showCustomSnackBar(context, state.error);
+                          } else if (state is LoginSuccess) {
+                            // Navigate to home screen or perform other actions
+                            // Navigator.pushReplacementNamed(context, '/home');
+                          }
+                        },
+                        builder: (context, state) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 160),
+                              Text('Email', style: TextStyle(color: greyColor)),
+                              CustomEmailField(controller: emailController),
+                              SizedBox(height: 35),
+                              Text(
+                                'Password',
+                                style: TextStyle(color: greyColor),
                               ),
-                              decoration: InputDecoration(
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: greyColor),
+                              CustomPasswordField(
+                                controller: passwordController,
+                              ),
+                              SizedBox(height: 40),
+                              if (state is LoginLoading)
+                                const Center(child: CircularProgressIndicator())
+                              else
+                                Column(
+                                  children: [
+                                    CustomButtonAuth(
+                                      text: 'SIGN IN',
+                                      onPressed: () {
+                                        context.read<LoginCubit>().login(
+                                          emailController.text.trim(),
+                                          passwordController.text.trim(),
+                                        );
+                                      },
+                                    ),
+                                    Container(
+                                      alignment: Alignment.topRight,
+                                      child: TextButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          'Forgot Password?',
+                                          style: TextStyle(
+                                            color: blackColortext,
+                                            fontSize: 16,
+                                          ),
+                                          textAlign: TextAlign.end,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(height: 20),
+                                    SignUpTextButton(),
+                                  ],
                                 ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 35),
-                          Text('Password', style: TextStyle(color: greyColor)),
-                          Container(
-                            alignment: Alignment.center,
-                            width: 335,
-                            child: TextFormField(
-                              style: TextStyle(
-                                color: darkBlueGrayColor,
-                                fontSize: 16,
-                              ),
-
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.remove_red_eye,
-                                    color: greyColor,
-                                  ),
-                                ),
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: greyColor),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 40),
-
-                          CustomButtonAuth(text: 'SIGN IN'),
-                          Container(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              'Forgot Password?',
-                              style: TextStyle(
-                                color: blackColortext,
-                                fontSize: 16,
-                              ),
-                              textAlign: TextAlign.end,
-                            ),
-                          ),
-                        ],
+                            ],
+                          );
+                        },
                       ),
                     ),
                   ),
                 ),
-                Positioned(
-                  top: 67.4,
-                  left: 64.13,
-                  child: Image.asset(
-                    APPImageAsset.appbarImage,
-                    width: 294.59,
-                    height: 131.36,
-                  ),
-                ),
-                Positioned(
-                  top: 222,
-                  left: 30,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Welcome back',
-                        style: TextStyle(
-                          color: blackColortext,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 34,
-                        ),
-                      ),
-                      SizedBox(height: 4),
-                      Text(
-                        'Sign in to continue',
-                        style: TextStyle(
-                          color: greyColor,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                AppbarImage(),
+                AppbarTitles(),
               ],
             ),
           ),
