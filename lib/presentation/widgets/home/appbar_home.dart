@@ -1,109 +1,119 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:school_management_system/core/constants/color.dart';
+import 'package:school_management_system/core/function/list.dart';
+import 'package:school_management_system/presentation/cubits/home_student/Home_cubit.dart';
+import 'package:school_management_system/presentation/cubits/home_student/Home_state.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
-  final List<String> announcements;
-
-  const CustomAppBar({
-    super.key,
-    required this.title,
-    required this.announcements,
-    required String studentName,
-  });
+  const CustomAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double itemWidth = MediaQuery.of(context).size.width / 3.6;
     return AppBar(
-      title: Text(
-        title,
-        style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-      ),
-      centerTitle: true,
-      elevation: 6.0,
+      elevation: 0,
       backgroundColor: boldBlueColor,
-      shadowColor: Colors.black45,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(25)),
-      ),
-      flexibleSpace: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.lightBlue, boldBlueColor],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-      ),
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(100.0),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:
-                  announcements
-                      .map(
-                        (announcement) => Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                          padding: const EdgeInsets.all(8.0),
-                          decoration: BoxDecoration(
-                            color: cyanColor,
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                blurRadius: 4,
-                                offset: const Offset(2, 2),
-                              ),
-                            ],
-                          ),
-                          child: Text(
-                            announcement,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: boldBlueColor,
-                            ),
-                          ),
-                        ),
-                      )
-                      .toList(),
+      centerTitle: true,
+      leading: Builder(
+        builder:
+            (context) => IconButton(
+              color: whiteColor,
+              icon: Icon(Icons.menu),
+              onPressed: () => Scaffold.of(context).openDrawer(),
             ),
-          ),
-        ),
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.notifications),
-          tooltip: 'الإشعارات',
-          onPressed: () {
-            // فتح صفحة الإشعارات
-          },
+          color: whiteColor,
+          icon: const Icon(Icons.notifications_none_sharp),
+          onPressed: () {},
         ),
         PopupMenuButton<String>(
-          icon: const Icon(Icons.more_vert),
+          icon: Icon(Icons.more_vert),
+          color: cyanColor,
+          iconColor: whiteColor,
+          shadowColor: whiteColor,
           onSelected: (value) {
             // التعامل مع الخيارات
           },
           itemBuilder:
               (context) => [
-                const PopupMenuItem(
+                PopupMenuItem(
                   value: 'settings',
-                  child: Text('الإعدادات'),
+                  child: Text('settings', style: TextStyle(color: whiteColor)),
+                  onTap: () {},
                 ),
-                const PopupMenuItem(
+                PopupMenuItem(
                   value: 'profile',
-                  child: Text('الملف الشخصي'),
+                  child: Text('profile ', style: TextStyle(color: whiteColor)),
+                  onTap: () {},
                 ),
               ],
         ),
       ],
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
+      ),
+
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: Container(
+          decoration: BoxDecoration(
+            color: boldBlueColor,
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: SingleChildScrollView(
+            physics: const PageScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            child: BlocBuilder<TabCubit, TabState>(
+              builder: (context, selectedIndex) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(tabs.length, (index) {
+                    final isSelected = index == selectedIndex.selectedIndex;
+                    return GestureDetector(
+                      onTap: () => context.read<TabCubit>().changeTab(index),
+                      child: Container(
+                        width: itemWidth,
+                        height: 40,
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          color: isSelected ? cyanColor : boldBlueColor,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(
+                          child: Text(
+                            tabs[index],
+                            style: TextStyle(
+                              overflow: TextOverflow.clip,
+                              color: isSelected ? whiteColor : whiteColor,
+                              fontWeight:
+                                  isSelected
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+                );
+              },
+            ),
+          ),
+        ),
+      ),
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(130.0);
+  Size get preferredSize => const Size.fromHeight(150);
 }

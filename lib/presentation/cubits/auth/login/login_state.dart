@@ -2,7 +2,7 @@ part of 'login_cubit.dart';
 
 abstract class LoginState extends Equatable {
   final bool obscurePassword;
-  
+
   const LoginState({this.obscurePassword = true});
 
   @override

@@ -11,7 +11,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => SplashScreen());
 
       case AppRoutes.login:
-        return MaterialPageRoute(builder: (_) => Login());
+        return MaterialPageRoute(builder: (_) => HomeStudent());
 
       case AppRoutes.homestudent:
         return MaterialPageRoute(builder: (_) => HomeStudent());

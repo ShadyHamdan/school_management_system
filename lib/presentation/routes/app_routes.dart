@@ -1,6 +1,7 @@
 class AppRoutes {
   static const String login = "/Login";
   static const String splashScreen = "/SplashScreen";
+  static const String homestudent = "/homestudent";
 
   static String forgetPassword = "/ForgetPassword";
   static String mylanguage = "/Mylanguage";
@@ -25,5 +26,4 @@ class AppRoutes {
   static String changepasswordprofile = "/ChangePasswordProfile";
   static String location = "/location";
   static String myLocation = "/MyLocation";
-  static const String homestudent = "/homestudent";
 }
