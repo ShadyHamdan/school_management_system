@@ -39,7 +39,6 @@ class RouteGenerator {
       case AppRoutes.homestudent:
         return MaterialPageRoute(builder: (_) => HomeStudent());
 
-      // ... بقية الحالات
       default:
         return MaterialPageRoute(
           builder:

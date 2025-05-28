@@ -6,7 +6,14 @@ import 'package:school_management_system/presentation/cubits/auth/code_confirm/c
 import 'package:school_management_system/presentation/cubits/auth/create_password/create_password_cubit.dart';
 import 'package:school_management_system/presentation/cubits/auth/create_profile/create_profile_cubit.dart';
 import 'package:school_management_system/presentation/cubits/auth/login/login_cubit.dart';
+
 import 'package:school_management_system/presentation/cubits/auth/signup/signup_cubit.dart';
+
+import 'package:school_management_system/presentation/cubits/home_student/Home_cubit.dart';
+import 'package:school_management_system/presentation/cubits/home_student/announcement/announcement_student_cubit.dart';
+import 'package:school_management_system/presentation/cubits/home_student/attendance_student/attendance_cubit.dart';
+import 'package:school_management_system/presentation/cubits/home_student/exam_results/exam_results_cubit.dart';
+import 'package:school_management_system/presentation/cubits/home_student/school_schedule/SchoolSchedule_cubit.dart';
 import 'package:school_management_system/presentation/routes/app_routes.dart';
 import 'package:school_management_system/presentation/routes/route_generator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -44,6 +51,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => CodeConfirmCubit()),
         BlocProvider(create: (context) => CreatePasswordCubit()),
         BlocProvider(create: (context) => CreateProfileCubit()),
+
+        BlocProvider(create: (context) => TabCubit()),
+        BlocProvider(create: (context) => AnnouncementStudentCubit()),
+        BlocProvider(create: (context) => ScheduleCubit()),
+        BlocProvider(create: (context) => AttendanceCubit()..loadAttendance()),
+        BlocProvider(create: (context) => ExamResultsCubit()..loadResults()),
       ],
       child: Builder(
         builder:
@@ -67,7 +80,7 @@ class MyApp extends StatelessWidget {
                     GlobalCupertinoLocalizations.delegate,
                   ],
                   debugShowCheckedModeBanner: false,
-                  initialRoute: AppRoutes.createProfile,
+                  initialRoute: AppRoutes.splashScreen  ,
                   onGenerateRoute: RouteGenerator.generateRoute,
                 );
               },
