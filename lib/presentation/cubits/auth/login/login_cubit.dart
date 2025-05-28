@@ -1,25 +1,32 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
-  Future<void> login(String email, String password) async {
-    emit(LoginLoading());
+
+
+  Future<void> login(String email, String password,BuildContext context) async {
+    final locale = AppLocalizations.of(context)!;
+
+    emit(LoginLoading(),);
     try {
       if (email.isEmpty || password.isEmpty) {
-        emit(const LoginError('Please fill in all fields'));
+        emit( LoginError(locale.loginErrorFillFields));
         return;
       }
 
       if (!_isEmailValid(email)) {
-        emit(const LoginError('Please enter a valid email address'));
+        emit( LoginError(locale.loginErrorValidEmail));
         return;
       }
       if (password.length < 6) {
-        emit(const LoginError('Please enter a strong password'));
+        emit( LoginError(locale.loginErrorStrongPassword));
         return;
       }
 
@@ -32,7 +39,7 @@ class LoginCubit extends Cubit<LoginState> {
       //   emit(LoginError(response.message));
       // }
     } catch (e) {
-      emit(LoginError(e.toString()));
+      emit(LoginError(e.toString(),obscurePassword: state.obscurePassword));
     }
   }
 void togglePasswordVisibility() {

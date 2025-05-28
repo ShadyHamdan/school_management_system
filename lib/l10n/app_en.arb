@@ -1,0 +1,81 @@
+{
+  "@@locale": "en",
+  "welcome_back": "Welcome Back",
+  "@welcome_back": {
+    "description": "Login page"
+  },
+  "sign_in_to_continue": "Sign in to continue",
+  "email": "Email",
+  "password": "Password",
+  "sign_in": "SIGN IN",
+  "forgot_password": "Forgot Password?",
+  "dont_have_account": "Don't have account? ",
+  "signup": "Sign UP",
+  "change_language": "Change Language",
+  "signup_confirm_button": "Confirm",
+  "@signup_confirm_button": {
+    "description": "Signup page"
+  },
+  "signup_have_account": "Have an account? ",
+  "signup_login_button": "Login",
+  "signup_welcome_title": "Welcome",
+  "signup_welcome_subtitle": "Sign up to continue",
+  "reset_password_title": "Reset Password",
+  "reset_password_subtitle": "Enter your email to reset \nyour password.",
+  "codeVerification": "Code Verification",
+  "@codeVerification": {
+    "description": "code Verification page"
+  },
+  "enterCodeSentToEmail": "Enter the code sent to\n the email ",
+  "confirm": "Confirm",
+  "codeNotReceived": "Code not received?",
+  "resend": "Resend.",
+  "editEmail": "Edit Email",
+  "createPasswordTitle": "Create a Password",
+  "@createPasswordTitle": {
+    "description": "Create password page"
+  },
+  "createPasswordSubtitle": "Please enter a strong password",
+  "enterPassword": "Enter the password",
+  "repeatPassword": "Repeat the Password",
+  "fullName": "Full name",
+  "@fullName": {
+    "description": "Create Profile Page"
+  },
+  "firstNameAndLastName": "First Name and Last Name",
+  "phonenumber": "Phone number",
+  "createProfile": "Create Profile",
+  "completeYourProfileInformation": "Complete your profile information",
+  "enterYourDateOfBirth": "Enter your date of birth",
+  "day": "DD",
+  "month": "MM",
+  "year": "YYYY",
+  "back": "Back",
+  "next": "Next",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "attribute": "Attribute",
+  "student": "Student",
+  "teacher": "Teacher",
+  "guardian": "Guardian",
+  "loginErrorFillFields": "Please fill in all fields",
+  "@loginErrorFillFields": {
+    "description": "error messages"
+  },
+  "loginErrorValidEmail": "Please enter a valid email address",
+  "loginErrorStrongPassword": "Please enter a strong password",
+  "codeConfirmErrorFillFields": "Please fill in all fields",
+  "codeConfirmErrorNumbersOnly": "Enter a code that contains numbers only",
+  "codeConfirmErrorIncorrect": "The code is incorrect, please check",
+  "createPasswordErrorFillFields": "Please fill in all fields",
+  "createPasswordErrorSamePassword": "Please enter the same password",
+  "createProfileErrorFillFields": "Please fill in all fields",
+  "createProfileErrorValidName": "Please enter a valid name",
+  "createProfileErrorFullName": "Please enter your full name",
+  "createProfileErrorValidPhone": "Please enter a valid phone number",
+  "createProfileErrorFullNumber": "Please enter your full number",
+  "createProfileErrorValidDay": "Please enter a valid day number",
+  "createProfileErrorValidMonth": "Please enter a valid month number",
+  "createProfileErrorValidYear": "Please enter a valid year number"
+}

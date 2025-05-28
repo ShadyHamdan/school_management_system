@@ -10,17 +10,18 @@ abstract class LoginState extends Equatable {
 }
 
 class LoginInitial extends LoginState {
-  const LoginInitial({super.obscurePassword = true});
+  const LoginInitial({super.obscurePassword = true  });
+  
 }
 
 class LoginLoading extends LoginState {
-  const LoginLoading({super.obscurePassword = true});
+  const LoginLoading({super.obscurePassword});
 }
 
 class LoginSuccess extends LoginState {
   final String message;
 
-  const LoginSuccess(this.message, {super.obscurePassword = true});
+  const LoginSuccess(this.message, {super.obscurePassword });
 
   @override
   List<Object> get props => [message, obscurePassword];
@@ -29,7 +30,7 @@ class LoginSuccess extends LoginState {
 class LoginError extends LoginState {
   final String error;
 
-  const LoginError(this.error, {super.obscurePassword = true});
+  const LoginError(this.error, {super.obscurePassword });
 
   @override
   List<Object> get props => [error, obscurePassword];

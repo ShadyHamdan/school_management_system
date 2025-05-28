@@ -2,17 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:school_management_system/core/constants/color.dart';
-import 'package:school_management_system/presentation/cubits/auth/login/login_cubit.dart';
+import 'package:school_management_system/presentation/cubits/auth/create_password/create_password_cubit.dart';
 
-class CustomPasswordField extends StatelessWidget {
+class CustomCreatePasswordField extends StatelessWidget {
   final TextEditingController controller;
-  const CustomPasswordField({super.key, required this.controller});
+  final bool obscurePassword;
+  final String fieldId;
+  const CustomCreatePasswordField({
+    super.key,
+    required this.controller,
+    required this.obscurePassword, required this.fieldId,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginState>(
+    return BlocBuilder<CreatePasswordCubit, CreatePasswordState>(
       builder: (context, state) {
-        final obscureText = state.obscurePassword;
+        final obscureText = obscurePassword;
         return Container(
           alignment: Alignment.center,
           width: 335.w,
@@ -23,7 +29,9 @@ class CustomPasswordField extends StatelessWidget {
             decoration: InputDecoration(
               suffixIcon: IconButton(
                 onPressed: () {
-                  context.read<LoginCubit>().togglePasswordVisibility();
+                  context
+                      .read<CreatePasswordCubit>()
+                      .togglePasswordVisibility(fieldId: fieldId);
                 },
                 icon: Icon(
                   obscureText ? Icons.visibility : Icons.visibility_off,

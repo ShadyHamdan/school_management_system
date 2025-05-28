@@ -2,41 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:school_management_system/core/constants/color.dart';
-import 'package:school_management_system/presentation/cubits/auth/login/login_cubit.dart';
+import 'package:school_management_system/presentation/cubits/Preferences/preferences_cubit.dart';
+import 'package:school_management_system/presentation/cubits/auth/signup/signup_cubit.dart';
 import 'package:school_management_system/presentation/routes/app_routes.dart';
+import 'package:school_management_system/presentation/widgets/auth/back_icon.dart';
 import 'package:school_management_system/presentation/widgets/auth/change_language_button.dart';
 import 'package:school_management_system/presentation/widgets/auth/custom_button_auth.dart';
 import 'package:school_management_system/presentation/widgets/auth/custom_snack_bar.dart';
-import 'package:school_management_system/presentation/widgets/auth/forgot_password_text.dart';
 import 'package:school_management_system/presentation/widgets/login_widgets/appbar_image.dart';
 import 'package:school_management_system/presentation/widgets/login_widgets/appbar_titles.dart';
 import 'package:school_management_system/presentation/widgets/login_widgets/custom_email_field.dart';
-import 'package:school_management_system/presentation/widgets/login_widgets/custom_password_field.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:school_management_system/presentation/widgets/login_widgets/signup_text_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class Signup extends StatelessWidget {
+  final String? previosPage;
+
+  const Signup({super.key, this.previosPage});
 
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
+    final bool isForgetPassScreen = (previosPage == 'forgetpassword');
+    emailController.text =
+        previosPage == 'codeConfirm'
+            ? context.read<PreferencesCubit>().getUserEmail()
+            : '';
+
     final locale = AppLocalizations.of(context)!;
-    LoginState? previousState;
+
     return Scaffold(
       backgroundColor: boldBlueColor,
       body: ListView(
         children: [
           SizedBox(
-            height: 850.h,
+            height: 780.h,
             width: 375.w,
             child: Stack(
               children: [
                 Positioned(
                   top: 210.h,
                   child: Container(
-                    height: 812.h,
+                    height: 600.h,
                     width: MediaQuery.sizeOf(context).width,
                     decoration: BoxDecoration(
                       color: whiteColor,
@@ -47,75 +54,79 @@ class Login extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(left: 30.w, right: 50.w),
-                      child: BlocConsumer<LoginCubit, LoginState>(
+                      child: BlocConsumer<SignupCubit, SignupState>(
                         listener: (context, state) {
-                          if (state is LoginError &&
-                              previousState is! LoginError) {
+                          if (state is SignupError) {
                             showCustomSnackBar(context, state.error);
-                          } else if (state is LoginSuccess) {
-                            // Navigate to home screen or perform other actions
-                            // Navigator.pushReplacementNamed(context, '/home');
+                          } else if (state is SignupSuccess) {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              AppRoutes.codeConfirm,
+                              arguments: emailController.text,
+                            );
                           }
-                          previousState = state;
                         },
                         builder: (context, state) {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(height: 180.h),
+                              SizedBox(height: 250.h),
                               Text(
                                 locale.email,
                                 style: TextStyle(
                                   color: greyColor,
                                   fontWeight: FontWeight.bold,
-
-                                  fontSize: 14.sp,
                                 ),
                               ),
-                              CustomEmailField(controller: emailController),
+                              CustomEmailField(
+                                controller: emailController,
+                                hintText: 'example@gmail.com',
+                              ),
                               SizedBox(height: 35.h),
-                              Text(
-                                locale.password,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: greyColor,
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              CustomPasswordField(
-                                controller: passwordController,
-                              ),
                               SizedBox(height: 40.h),
-                              if (state is LoginLoading)
+                              if (state is SignupLoading)
                                 const Center(child: CircularProgressIndicator())
                               else
                                 Column(
                                   children: [
                                     CustomButtonAuth(
-                                      text: locale.sign_in,
+                                      text: locale.signup_confirm_button,
                                       onPressed: () {
-                                        context.read<LoginCubit>().login(
+                                        context
+                                            .read<PreferencesCubit>()
+                                            .setUserEmail(emailController.text);
+                                        String task =
+                                            isForgetPassScreen
+                                                ? "Reset"
+                                                : "Create";
+                                        context
+                                            .read<PreferencesCubit>()
+                                            .setCreatePasswordTask(
+                                              task,
+                                            );
+                                        context.read<SignupCubit>().signup(
                                           emailController.text.trim(),
-                                          passwordController.text.trim(),
                                           context,
                                         );
                                       },
                                     ),
-                                    ForgotPasswordText(locale: locale),
+
                                     SizedBox(height: 20.h),
-                                    CustomRichText(
-                                      text: locale.dont_have_account,
-                                      textButton: locale.signup,
-                                      onTap: () {
-                                        Navigator.of(
-                                          context,
-                                        ).pushNamedAndRemoveUntil(
-                                          AppRoutes.signup,
-                                          (route) => false,
-                                          arguments: 'signup',
-                                        );
-                                      },
-                                    ),
+                                    !isForgetPassScreen
+                                        ? CustomRichText(
+                                          text: locale.signup_have_account,
+                                          textButton:
+                                              locale.signup_login_button,
+                                          onTap: () {
+                                            Navigator.of(
+                                              context,
+                                            ).pushNamedAndRemoveUntil(
+                                              '/Login',
+                                              (route) => false,
+                                            );
+                                          },
+                                        )
+                                        : SizedBox(),
                                   ],
                                 ),
                             ],
@@ -127,10 +138,16 @@ class Login extends StatelessWidget {
                 ),
                 ChangeLanguageButton(locale: locale),
                 AppbarImage(),
-                AppbarTitles(
-                  title: locale.welcome_back,
-                  subTitle: locale.sign_in_to_continue,
-                ),
+                isForgetPassScreen ? BackIcon() : SizedBox(),
+                isForgetPassScreen
+                    ? AppbarTitles(
+                      title: locale.reset_password_title,
+                      subTitle: locale.reset_password_subtitle,
+                    )
+                    : AppbarTitles(
+                      title: locale.signup_welcome_title,
+                      subTitle: locale.signup_welcome_subtitle,
+                    ),
               ],
             ),
           ),
