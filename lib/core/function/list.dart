@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:school_management_system/data/models/schedule.dart';
 import 'package:school_management_system/presentation/screens/home/announcement_student.dart';
 import 'package:school_management_system/presentation/screens/home/attendance_screen_student.dart';
+import 'package:school_management_system/presentation/screens/home/medals_page_student.dart';
+import 'package:school_management_system/presentation/screens/home/note_view_Student.dart';
 import 'package:school_management_system/presentation/screens/home/school_schedule_student.dart';
+import 'package:school_management_system/presentation/screens/home/school_trips_student.dart';
 import 'package:school_management_system/presentation/screens/home/student_exam_results_student%20.dart';
+import 'package:school_management_system/presentation/screens/home/teachers_list_page_student.dart';
 
 final List<String> tabs = [
   "الاعلانات",
@@ -11,7 +15,7 @@ final List<String> tabs = [
   "الحضور",
   "النتائج",
   "الملاحظات",
-  "المعدل",
+
   "تقييم",
   "الرحلات",
   "الأوسمة والجوائز",
@@ -22,11 +26,11 @@ final List<Widget> pages = [
   SchoolScheduleScreen(),
   AttendanceScreen(),
   ExamResultsScreen(),
-  Center(child: Text("صفحة الملاحظات", style: TextStyle(fontSize: 24))),
-  Center(child: Text("صفحة المعدل", style: TextStyle(fontSize: 24))),
-  Center(child: Text("صفحة تقييم", style: TextStyle(fontSize: 24))),
-  Center(child: Text("صفحة الرحلات", style: TextStyle(fontSize: 24))),
-  Center(child: Text("الأوسمة والجوائز", style: TextStyle(fontSize: 24))),
+  AddStudentNoteScreen(),
+
+  TeachersListPage(),
+  TripsScreen(),
+  MedalsPage(studentId: 4),
   Center(child: Text("شكوى ", style: TextStyle(fontSize: 24))),
 ];
 final List<Map<String, dynamic>> drawerItems = [

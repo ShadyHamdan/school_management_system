@@ -13,7 +13,9 @@ import 'package:school_management_system/presentation/cubits/home_student/Home_c
 import 'package:school_management_system/presentation/cubits/home_student/announcement/announcement_student_cubit.dart';
 import 'package:school_management_system/presentation/cubits/home_student/attendance_student/attendance_cubit.dart';
 import 'package:school_management_system/presentation/cubits/home_student/exam_results/exam_results_cubit.dart';
+import 'package:school_management_system/presentation/cubits/home_student/notes_student/student_notes_cubit.dart';
 import 'package:school_management_system/presentation/cubits/home_student/school_schedule/SchoolSchedule_cubit.dart';
+import 'package:school_management_system/presentation/cubits/home_student/school_trips/trip_cubit.dart';
 import 'package:school_management_system/presentation/routes/app_routes.dart';
 import 'package:school_management_system/presentation/routes/route_generator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -57,6 +59,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ScheduleCubit()),
         BlocProvider(create: (context) => AttendanceCubit()..loadAttendance()),
         BlocProvider(create: (context) => ExamResultsCubit()..loadResults()),
+        BlocProvider(create: (context) => StudentNotesCubit()),
+        BlocProvider(create: (context) => TripCubit()..loadTrips()),
       ],
       child: Builder(
         builder:

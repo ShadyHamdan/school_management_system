@@ -4,11 +4,11 @@ import 'package:school_management_system/core/constants/color.dart';
 import 'package:school_management_system/presentation/cubits/home_student/announcement/announcement_Student_state.dart';
 import 'package:school_management_system/presentation/cubits/home_student/announcement/announcement_student_cubit.dart';
 
-class CardAnnouncement extends StatelessWidget {
+class CustomCardAnnouncement extends StatelessWidget {
   final dynamic announcement;
   final int index;
 
-  const CardAnnouncement({
+  const CustomCardAnnouncement({
     super.key,
     required this.announcement,
     required this.index,

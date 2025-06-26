@@ -3,7 +3,7 @@ import 'package:school_management_system/presentation/cubits/home_student/announ
 
 class AnnouncementStudentCubit extends Cubit<AnnouncementStudentState> {
   AnnouncementStudentCubit() : super(const AnnouncementStudentState());
-
+  // تابع لطي الاعلانات او فتحها
   void toggleExpanded(int index) {
     final currentSet = Set<int>.from(state.expandedIndexes);
     if (currentSet.contains(index)) {

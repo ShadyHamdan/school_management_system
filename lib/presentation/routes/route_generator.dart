@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:school_management_system/presentation/routes/app_routes.dart';
-import 'package:school_management_system/presentation/screens/auth/code_confirm.dart';
-import 'package:school_management_system/presentation/screens/auth/create_password.dart';
-import 'package:school_management_system/presentation/screens/auth/create_profile.dart';
 import 'package:school_management_system/presentation/screens/auth/login.dart';
-import 'package:school_management_system/presentation/screens/auth/signup.dart';
 import 'package:school_management_system/presentation/screens/auth/splash_screen.dart';
 import 'package:school_management_system/presentation/screens/auth/waiting_page.dart';
 import 'package:school_management_system/presentation/screens/home/home_Student.dart';

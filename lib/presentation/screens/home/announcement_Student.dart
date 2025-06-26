@@ -25,7 +25,10 @@ class AnnouncementStudent extends StatelessWidget {
         itemCount: announcements.length,
         itemBuilder: (context, index) {
           final announcement = announcements[index];
-          return CardAnnouncement(announcement: announcement, index: index);
+          return CustomCardAnnouncement(
+            announcement: announcement,
+            index: index,
+          );
         },
       ),
     );

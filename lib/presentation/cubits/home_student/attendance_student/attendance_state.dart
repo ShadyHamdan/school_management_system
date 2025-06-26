@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:school_management_system/data/models/attendance_model.dart';
+import 'package:school_management_system/data/models/attendance_student.dart';
 
 class AttendanceState extends Equatable {
   final AttendanceModel? weekly;
