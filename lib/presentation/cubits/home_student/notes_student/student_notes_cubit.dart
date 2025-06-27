@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'student_notes_state.dart';
-import 'package:school_management_system/data/models/student_note.dart';
+import 'package:school_management_system/data/models/student_home/student_note.dart';
 
 class StudentNotesCubit extends Cubit<StudentNotesState> {
   StudentNotesCubit() : super(const StudentNotesState());

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:school_management_system/presentation/routes/app_routes.dart';
+import 'package:school_management_system/presentation/screens/auth/code_confirm.dart';
+import 'package:school_management_system/presentation/screens/auth/create_password.dart';
+import 'package:school_management_system/presentation/screens/auth/create_profile.dart';
 import 'package:school_management_system/presentation/screens/auth/login.dart';
+import 'package:school_management_system/presentation/screens/auth/signup.dart';
 import 'package:school_management_system/presentation/screens/auth/splash_screen.dart';
 import 'package:school_management_system/presentation/screens/auth/waiting_page.dart';
 import 'package:school_management_system/presentation/screens/home/home_Student.dart';
@@ -20,8 +24,8 @@ class RouteGenerator {
       case AppRoutes.createProfile:
         return MaterialPageRoute(builder: (_) => CreateProfile());
 
-      case AppRoutes.login:
-        return MaterialPageRoute(builder: (_) => Login());
+      case AppRoutes.login: //عدلت لاقدر اشتغل بالهوم
+        return MaterialPageRoute(builder: (_) => HomeStudent());
 
       case AppRoutes.signup:
         final signupArgs = settings.arguments as String?;

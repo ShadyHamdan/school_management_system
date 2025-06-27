@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:school_management_system/data/models/schedule.dart';
+import 'package:school_management_system/data/models/student_home/schedule.dart';
 
 class ScheduleState extends Equatable {
   final Map<String, List<ClassPeriod>> schedule;

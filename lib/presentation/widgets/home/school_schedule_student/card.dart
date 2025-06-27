@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:school_management_system/core/constants/color.dart';
-import 'package:school_management_system/data/models/schedule.dart';
+import 'package:school_management_system/data/models/student_home/schedule.dart';
 
 class ClassCard extends StatelessWidget {
   final int index;

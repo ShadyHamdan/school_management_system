@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:school_management_system/data/models/StudentExamResults.dart';
+import 'package:school_management_system/data/models/student_home/StudentExamResults.dart';
 
 class ExamResultsState extends Equatable {
   final Map<String, List<ExamResultModel>> categorizedResults;

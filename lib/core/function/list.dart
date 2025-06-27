@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:school_management_system/data/models/schedule.dart';
+import 'package:school_management_system/data/models/complaint_student.dart';
+import 'package:school_management_system/data/models/student_home/schedule.dart';
 import 'package:school_management_system/presentation/screens/home/announcement_student.dart';
 import 'package:school_management_system/presentation/screens/home/attendance_screen_student.dart';
+import 'package:school_management_system/presentation/screens/home/complaint_student.dart';
 import 'package:school_management_system/presentation/screens/home/medals_page_student.dart';
 import 'package:school_management_system/presentation/screens/home/note_view_Student.dart';
 import 'package:school_management_system/presentation/screens/home/school_schedule_student.dart';
@@ -27,11 +29,10 @@ final List<Widget> pages = [
   AttendanceScreen(),
   ExamResultsScreen(),
   AddStudentNoteScreen(),
-
   TeachersListPage(),
   TripsScreen(),
   MedalsPage(studentId: 4),
-  Center(child: Text("شكوى ", style: TextStyle(fontSize: 24))),
+  ComplaintPage(studentId: 3),
 ];
 final List<Map<String, dynamic>> drawerItems = [
   {

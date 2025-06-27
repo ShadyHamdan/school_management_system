@@ -53,7 +53,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => CodeConfirmCubit()),
         BlocProvider(create: (context) => CreatePasswordCubit()),
         BlocProvider(create: (context) => CreateProfileCubit()),
-
         BlocProvider(create: (context) => TabCubit()),
         BlocProvider(create: (context) => AnnouncementStudentCubit()),
         BlocProvider(create: (context) => ScheduleCubit()),
@@ -84,7 +83,7 @@ class MyApp extends StatelessWidget {
                     GlobalCupertinoLocalizations.delegate,
                   ],
                   debugShowCheckedModeBanner: false,
-                  initialRoute: AppRoutes.splashScreen  ,
+                  initialRoute: AppRoutes.splashScreen,
                   onGenerateRoute: RouteGenerator.generateRoute,
                 );
               },
