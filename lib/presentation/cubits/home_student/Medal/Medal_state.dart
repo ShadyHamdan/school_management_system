@@ -1,6 +1,6 @@
 // State
 import 'package:equatable/equatable.dart';
-import 'package:school_management_system/data/models/student_home/Medal.dart';
+import 'package:school_management_system/data/models/student_model/Medal.dart';
 
 abstract class MedalsState extends Equatable {
   @override

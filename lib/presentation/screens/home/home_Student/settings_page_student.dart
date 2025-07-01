@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_management_system/presentation/cubits/settings_student/settings_cubit.dart';
+import 'package:school_management_system/core/constants/color.dart';
+import 'package:school_management_system/presentation/cubits/home_student/settings_student/settings_cubit.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+class SettingsPageStudent extends StatelessWidget {
+  const SettingsPageStudent({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => SettingsCubit(),
       child: Scaffold(
-        appBar: AppBar(title: const Text('الإعدادات')),
+        backgroundColor: whiteColor,
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.arrow_back_ios),
+          ),
+          backgroundColor: boldBlueColor,
+          title: const Text('الإعدادات', style: TextStyle(color: whiteColor)),
+        ),
         body: BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, state) {
             final cubit = context.read<SettingsCubit>();

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:school_management_system/core/function/list.dart';
 import 'package:school_management_system/presentation/cubits/home_student/school_schedule/SchoolSchedule_cubit.dart';
 import 'package:school_management_system/presentation/cubits/home_student/school_schedule/SchoolSchedule_state.dart';
-import 'package:school_management_system/presentation/widgets/home/school_schedule_student/card.dart';
+import 'package:school_management_system/presentation/widgets/home/home_student/school_schedule_student/card.dart';
 
 class ClassScheduleList extends StatelessWidget {
   const ClassScheduleList({super.key});

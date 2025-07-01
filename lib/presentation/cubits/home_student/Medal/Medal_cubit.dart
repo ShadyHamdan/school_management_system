@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_management_system/data/models/student_home/Medal.dart';
+import 'package:school_management_system/data/models/student_model/Medal.dart';
 import 'package:school_management_system/presentation/cubits/home_student/Medal/Medal_state.dart';
 
 class MedalsCubit extends Cubit<MedalsState> {

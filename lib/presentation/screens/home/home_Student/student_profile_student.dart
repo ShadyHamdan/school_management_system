@@ -4,9 +4,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:school_management_system/core/constants/color.dart';
 import 'package:school_management_system/presentation/cubits/home_student/profile/profile_cubit.dart';
 import 'package:school_management_system/presentation/cubits/home_student/profile/profile_state.dart';
-import 'package:school_management_system/presentation/screens/home/home_Student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/home_Student.dart';
 
 class StudentProfilePage extends StatefulWidget {
   const StudentProfilePage({super.key});
@@ -55,7 +56,10 @@ class _StudentProfilePageState extends State<StudentProfilePage> {
     return BlocProvider(
       create: (_) => StudentProfileCubit()..fetchStudentProfile(),
       child: Scaffold(
-        appBar: AppBar(title: Text('ملف الطالب')),
+        appBar: AppBar(
+          backgroundColor: boldBlueColor,
+          title: Text('ملف الطالب', style: TextStyle(color: whiteColor)),
+        ),
         body: BlocBuilder<StudentProfileCubit, StudentProfileState>(
           builder: (context, state) {
             if (state is StudentProfileLoading) {

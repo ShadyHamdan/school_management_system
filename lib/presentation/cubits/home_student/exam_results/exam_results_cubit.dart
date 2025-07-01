@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_management_system/data/models/student_home/StudentExamResults.dart';
+import 'package:school_management_system/data/models/student_model/StudentExamResults.dart';
 import 'package:school_management_system/presentation/cubits/home_student/exam_results/exam_results_state.dart';
 
 class ExamResultsCubit extends Cubit<ExamResultsState> {

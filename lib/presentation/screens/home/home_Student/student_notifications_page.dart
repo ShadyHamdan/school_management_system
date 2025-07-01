@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:school_management_system/core/constants/color.dart';
 import 'package:school_management_system/presentation/cubits/home_student/notifications/notifications_cubit.dart';
 
 class StudentNotificationsPage extends StatelessWidget {
@@ -10,7 +11,10 @@ class StudentNotificationsPage extends StatelessWidget {
     return BlocProvider(
       create: (_) => NotificationsCubit(),
       child: Scaffold(
-        appBar: AppBar(title: const Text('الإشعارات')),
+        appBar: AppBar(
+          backgroundColor: boldBlueColor,
+          title: const Text('الإشعارات', style: TextStyle(color: whiteColor)),
+        ),
         body: BlocBuilder<NotificationsCubit, NotificationsState>(
           builder: (context, state) {
             if (state.notifications.isEmpty) {

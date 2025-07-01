@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_management_system/presentation/cubits/home_student/Complaint_student/complaint_state%20.dart';
+import 'package:school_management_system/presentation/cubits/home_guardian/complaint/Complaint_guardian_State.dart';
 
-class ComplaintStudentCubit extends Cubit<ComplaintStudentState> {
-  ComplaintStudentCubit() : super(ComplaintInitial());
+class ComplaintGuardianCubit extends Cubit<ComplaintGuardianState> {
+  ComplaintGuardianCubit() : super(ComplaintInitial());
 
   String type = 'general';
   String content = '';
@@ -15,7 +15,7 @@ class ComplaintStudentCubit extends Cubit<ComplaintStudentState> {
 
   void setAnonymous(bool value) => anonymous = value;
 
-  Future<void> submitComplaint(int studentId) async {
+  Future<void> submitComplaint(int guardian) async {
     emit(ComplaintLoading());
 
     try {

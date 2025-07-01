@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:school_management_system/presentation/cubits/home_student/teacher_evaluation_page_student/teacher_cubit.dart';
 import 'package:school_management_system/presentation/cubits/home_student/teacher_evaluation_page_student/teacher_state.dart';
-import 'package:school_management_system/presentation/screens/home/teacher_evaluation_page_student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/teacher_evaluation_page_student.dart';
 
 class TeachersListPage extends StatelessWidget {
   const TeachersListPage({super.key});

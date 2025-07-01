@@ -10,7 +10,7 @@ import 'package:school_management_system/presentation/cubits/auth/login/login_cu
 import 'package:school_management_system/presentation/cubits/auth/signup/signup_cubit.dart';
 
 import 'package:school_management_system/presentation/cubits/home_student/Home_cubit.dart';
-import 'package:school_management_system/presentation/cubits/home_student/announcement/announcement_student_cubit.dart';
+import 'package:school_management_system/presentation/cubits/home_student/announcement_student&guardian/announcement_cubit.dart';
 import 'package:school_management_system/presentation/cubits/home_student/attendance_student/attendance_cubit.dart';
 import 'package:school_management_system/presentation/cubits/home_student/exam_results/exam_results_cubit.dart';
 import 'package:school_management_system/presentation/cubits/home_student/notes_student/student_notes_cubit.dart';

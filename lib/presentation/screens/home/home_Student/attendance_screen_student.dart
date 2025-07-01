@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:school_management_system/core/constants/color.dart';
-import 'package:school_management_system/presentation/widgets/home/attendance_screen_student/term_attendance_view%20.dart';
-import 'package:school_management_system/presentation/widgets/home/attendance_screen_student/weekly_attendance_view.dart';
-import 'package:school_management_system/presentation/widgets/home/attendance_screen_student/year_attendance_view%20.dart';
+import 'package:school_management_system/presentation/widgets/home/home_student/attendance_screen_student/term_attendance_view%20.dart';
+import 'package:school_management_system/presentation/widgets/home/home_student/attendance_screen_student/weekly_attendance_view.dart';
+import 'package:school_management_system/presentation/widgets/home/home_student/attendance_screen_student/year_attendance_view%20.dart';
 
 class AttendanceScreen extends StatelessWidget {
   const AttendanceScreen({super.key});

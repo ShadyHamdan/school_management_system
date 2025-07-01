@@ -7,10 +7,11 @@ import 'package:school_management_system/presentation/screens/auth/login.dart';
 import 'package:school_management_system/presentation/screens/auth/signup.dart';
 import 'package:school_management_system/presentation/screens/auth/splash_screen.dart';
 import 'package:school_management_system/presentation/screens/auth/waiting_page.dart';
-import 'package:school_management_system/presentation/screens/home/home_Student.dart';
-import 'package:school_management_system/presentation/screens/home/settings_page.dart';
-import 'package:school_management_system/presentation/screens/home/student_notifications_page.dart';
-import 'package:school_management_system/presentation/screens/home/student_profile_student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Guardian/home_page_Guardian.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/home_Student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/settings_page_student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/student_notifications_page.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/student_profile_student.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -28,7 +29,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => CreateProfile());
 
       case AppRoutes.login: //عدلت لاقدر اشتغل بالهوم
-        return MaterialPageRoute(builder: (_) => HomeStudent());
+        return MaterialPageRoute(builder: (_) => HomeGuardian());
 
       case AppRoutes.signup:
         final signupArgs = settings.arguments as String?;
@@ -43,10 +44,12 @@ class RouteGenerator {
 
       case AppRoutes.homestudent:
         return MaterialPageRoute(builder: (_) => HomeStudent());
+      case AppRoutes.homeguardian:
+        return MaterialPageRoute(builder: (_) => HomeGuardian());
       case AppRoutes.studentprofilepage:
         return MaterialPageRoute(builder: (_) => StudentProfilePage());
       case AppRoutes.settingsPage:
-        return MaterialPageRoute(builder: (_) => SettingsPage());
+        return MaterialPageRoute(builder: (_) => SettingsPageStudent());
 
       default:
         return MaterialPageRoute(

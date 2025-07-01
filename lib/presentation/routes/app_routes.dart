@@ -10,6 +10,7 @@ class AppRoutes {
   static const String studentprofilepage = "/StudentProfilePage";
   static const String settingsPage = "/SettingsPage";
   static const String notification = "/StudentNotificationsPage";
+  static const String homeguardian = "/HomeGuardian";
 
   static String mylanguage = "/Mylanguage";
   static String verifyCode = "/VerifyCode";

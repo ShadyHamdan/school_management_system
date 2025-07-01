@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:school_management_system/data/models/complaint_student.dart';
-import 'package:school_management_system/data/models/student_home/schedule.dart';
-import 'package:school_management_system/presentation/screens/home/announcement_student.dart';
-import 'package:school_management_system/presentation/screens/home/attendance_screen_student.dart';
-import 'package:school_management_system/presentation/screens/home/complaint_student.dart';
-import 'package:school_management_system/presentation/screens/home/medals_page_student.dart';
-import 'package:school_management_system/presentation/screens/home/note_view_Student.dart';
-import 'package:school_management_system/presentation/screens/home/school_schedule_student.dart';
-import 'package:school_management_system/presentation/screens/home/school_trips_student.dart';
-import 'package:school_management_system/presentation/screens/home/settings_page.dart';
-import 'package:school_management_system/presentation/screens/home/student_exam_results_student%20.dart';
-import 'package:school_management_system/presentation/screens/home/student_notifications_page.dart';
-import 'package:school_management_system/presentation/screens/home/teachers_list_page_student.dart';
+import 'package:school_management_system/data/models/student_model/schedule.dart';
+import 'package:school_management_system/presentation/screens/home/announcement_Student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Guardian/Performance_page.dart';
+import 'package:school_management_system/presentation/screens/home/home_Guardian/bus_tracking_page_guardian.dart';
+import 'package:school_management_system/presentation/screens/home/home_Guardian/complaint_page_guardian.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/attendance_screen_student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/complaint_student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/medals_page_student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/note_view_Student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/school_schedule_student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/school_trips_student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/settings_page_student.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/student_exam_results_student%20.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/student_notifications_page.dart';
+import 'package:school_management_system/presentation/screens/home/home_Student/teachers_list_page_student.dart';
 
-final List<String> tabs = [
+//student
+final List<String> tabsStudent = [
   "الاعلانات",
   "البرنامج",
   "الحضور",
@@ -25,7 +28,8 @@ final List<String> tabs = [
   "الأوسمة والجوائز",
   "شكوى",
 ];
-final List<Widget> pages = [
+
+final List<Widget> pagesStudent = [
   AnnouncementStudent(),
   SchoolScheduleScreen(),
   AttendanceScreen(),
@@ -34,9 +38,9 @@ final List<Widget> pages = [
   TeachersListPage(),
   TripsScreen(),
   MedalsPage(studentId: 4),
-  ComplaintPage(studentId: 3),
+  ComplaintStudentPage(studentId: 3),
 ];
-List<Map<String, dynamic>> getDrawerItems(BuildContext context) => [
+List<Map<String, dynamic>> getDrawerItemsStudent(BuildContext context) => [
   {
     'icon': Icons.person,
     'title': 'الملف الشخصي',
@@ -52,7 +56,7 @@ List<Map<String, dynamic>> getDrawerItems(BuildContext context) => [
     'onTap': () async {
       await Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => SettingsPage()),
+        MaterialPageRoute(builder: (context) => SettingsPageStudent()),
       );
     },
   },
@@ -151,3 +155,60 @@ Map<String, List<ClassPeriod>> schedule = {
   ],
   // بقية الأيام
 };
+//guardian
+final List<String> tabsGuardian = [
+  "الاعلانات",
+  "البرنامج",
+  "الحضور وتبرير الغياب",
+  "النتائج",
+  "تتبع الرحلات",
+  "شكوى",
+];
+final List<Widget> pagesGuardian = [
+  AnnouncementStudent(),
+  SchoolScheduleScreen(),
+  PerformancePage(studentId: 1, parentId: 1),
+  AttendanceScreen(),
+  BusTrackingPage(parentId: 1),
+  ComplaintGuardianPage(guardiantId: 1),
+];
+List<Map<String, dynamic>> getDrawerItemsGuardian(BuildContext context) => [
+  {
+    'icon': Icons.person,
+    'title': 'الملف الشخصي',
+    'onTap': () {
+      // Navigator.of(
+      //   context,
+      // ).pushNamedAndRemoveUntil('/GuardianProfilePage', (route) => false);
+    },
+  },
+  {
+    'icon': Icons.settings,
+    'title': 'الإعدادات',
+    'onTap': () async {
+      // await Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => SettingsPageGuardian()),
+      // );
+    },
+  },
+  {
+    'icon': Icons.logout,
+    'title': 'تسجيل الخروج',
+    'onTap': () {
+      // تنفيذ أمر تسجيل الخروج
+      Navigator.of(context).pushNamedAndRemoveUntil('/Login', (route) => false);
+    },
+  },
+
+  {
+    'icon': Icons.notifications,
+    'title': 'الإشعارات',
+    'onTap': () async {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => StudentNotificationsPage()),
+      );
+    },
+  },
+];

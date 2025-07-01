@@ -1,6 +1,6 @@
 // Cubit
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_management_system/data/models/student_home/student_profile.dart';
+import 'package:school_management_system/data/models/student_model/student_profile.dart';
 import 'package:school_management_system/presentation/cubits/home_student/profile/profile_state.dart';
 
 class StudentProfileCubit extends Cubit<StudentProfileState> {

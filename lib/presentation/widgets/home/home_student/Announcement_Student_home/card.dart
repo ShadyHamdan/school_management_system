@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:school_management_system/core/constants/color.dart';
-import 'package:school_management_system/presentation/cubits/home_student/announcement/announcement_Student_state.dart';
-import 'package:school_management_system/presentation/cubits/home_student/announcement/announcement_student_cubit.dart';
+import 'package:school_management_system/presentation/cubits/home_student/announcement_student&guardian/announcement_state.dart';
+import 'package:school_management_system/presentation/cubits/home_student/announcement_student&guardian/announcement_cubit.dart';
 
 class CustomCardAnnouncement extends StatelessWidget {
   final dynamic announcement;

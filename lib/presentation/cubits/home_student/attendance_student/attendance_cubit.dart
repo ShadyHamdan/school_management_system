@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'attendance_state.dart';
-import 'package:school_management_system/data/models/student_home/attendance_student.dart';
+import 'package:school_management_system/data/models/student_model/attendance_student.dart';
 
 class AttendanceCubit extends Cubit<AttendanceState> {
   AttendanceCubit() : super(AttendanceState.initial());

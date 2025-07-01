@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:school_management_system/core/constants/color.dart';
 import 'package:school_management_system/core/constants/image_asset.dart';
-import 'package:school_management_system/core/function/list.dart';
 
 class DrawerHome extends StatelessWidget {
-  const DrawerHome({super.key});
+  final String name;
+  final List<Map<String, dynamic>> drawerItems;
+  const DrawerHome({super.key, required this.name, required this.drawerItems});
 
   @override
   Widget build(BuildContext context) {
-    final drawerItems = getDrawerItems(context);
-
     return Drawer(
       shadowColor: whiteColor,
       child: Stack(
@@ -26,9 +25,9 @@ class DrawerHome extends StatelessWidget {
           ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
-              const DrawerHeader(
+              DrawerHeader(
                 child: Text(
-                  'قائمة الطالب',
+                  name,
                   style: TextStyle(color: Colors.white, fontSize: 24),
                 ),
               ),

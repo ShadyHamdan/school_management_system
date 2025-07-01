@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:school_management_system/core/function/list.dart';
-import 'package:school_management_system/presentation/widgets/home/Announcement_Student_home/card.dart';
+import 'package:school_management_system/presentation/widgets/home/home_student/Announcement_Student_home/card.dart';
 
 class Announcement {
   final String title;

@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 
-class ComplaintState extends Equatable {
+class ComplaintStudentState extends Equatable {
   @override
   List<Object?> get props => [];
 }
 
-class ComplaintInitial extends ComplaintState {}
+class ComplaintInitial extends ComplaintStudentState {}
 
-class ComplaintLoading extends ComplaintState {}
+class ComplaintLoading extends ComplaintStudentState {}
 
-class ComplaintSuccess extends ComplaintState {}
+class ComplaintSuccess extends ComplaintStudentState {}
 
-class ComplaintFailure extends ComplaintState {
+class ComplaintFailure extends ComplaintStudentState {
   final String message;
   ComplaintFailure(this.message);
   @override

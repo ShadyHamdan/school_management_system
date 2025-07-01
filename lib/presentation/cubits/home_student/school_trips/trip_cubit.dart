@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_management_system/data/models/student_home/trip.dart';
+import 'package:school_management_system/data/models/student_model/trip.dart';
 import 'trip_state.dart';
 
 class TripCubit extends Cubit<TripState> {

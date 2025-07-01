@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:school_management_system/data/models/student_home/trip.dart';
+import 'package:school_management_system/data/models/student_model/trip.dart';
 
 class TripState extends Equatable {
   final List<TripModel> trips;

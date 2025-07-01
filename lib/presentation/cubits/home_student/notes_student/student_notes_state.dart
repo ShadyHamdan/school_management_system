@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:school_management_system/data/models/student_home/student_note.dart';
+import 'package:school_management_system/data/models/student_model/student_note.dart';
 
 class StudentNotesState extends Equatable {
   final List<StudentNote> notes;
