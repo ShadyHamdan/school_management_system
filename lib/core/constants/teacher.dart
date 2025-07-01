@@ -1,3 +1,4 @@
+// Model: Teacher
 class Teacher {
   final int id;
   final String name;

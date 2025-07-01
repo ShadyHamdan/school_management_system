@@ -1,3 +1,4 @@
+// UI: Teachers List Page
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:school_management_system/presentation/cubits/home_student/teacher_evaluation_page_student/teacher_cubit.dart';
@@ -15,7 +16,7 @@ class TeachersListPage extends StatelessWidget {
         body: BlocBuilder<TeachersCubit, TeachersState>(
           builder: (context, state) {
             if (state is TeachersLoading) {
-              // return Center(child: CircularProgressIndicator());
+              return Center(child: CircularProgressIndicator());
             } else if (state is TeachersError) {
               return Center(child: Text(state.message));
             } else if (state is TeachersLoaded) {
@@ -43,7 +44,7 @@ class TeachersListPage extends StatelessWidget {
                 },
               );
             }
-            return Container();
+            return SizedBox();
           },
         ),
       ),

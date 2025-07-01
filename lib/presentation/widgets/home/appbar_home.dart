@@ -4,6 +4,7 @@ import 'package:school_management_system/core/constants/color.dart';
 import 'package:school_management_system/core/function/list.dart';
 import 'package:school_management_system/presentation/cubits/home_student/Home_cubit.dart';
 import 'package:school_management_system/presentation/cubits/home_student/Home_state.dart';
+import 'package:school_management_system/presentation/screens/home/student_notifications_page.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -27,7 +28,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           color: whiteColor,
           icon: const Icon(Icons.notifications_none_sharp),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => StudentNotificationsPage(),
+              ),
+            );
+          },
         ),
         PopupMenuButton<String>(
           icon: Icon(Icons.more_vert),
@@ -42,12 +50,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 PopupMenuItem(
                   value: 'settings',
                   child: Text('settings', style: TextStyle(color: whiteColor)),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/SettingsPage',
+                      (route) => false,
+                    );
+                  },
                 ),
                 PopupMenuItem(
                   value: 'profile',
                   child: Text('profile ', style: TextStyle(color: whiteColor)),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/StudentProfilePage',
+                      (route) => false,
+                    );
+                  },
                 ),
               ],
         ),

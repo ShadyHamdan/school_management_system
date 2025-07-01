@@ -8,7 +8,9 @@ import 'package:school_management_system/presentation/screens/home/medals_page_s
 import 'package:school_management_system/presentation/screens/home/note_view_Student.dart';
 import 'package:school_management_system/presentation/screens/home/school_schedule_student.dart';
 import 'package:school_management_system/presentation/screens/home/school_trips_student.dart';
+import 'package:school_management_system/presentation/screens/home/settings_page.dart';
 import 'package:school_management_system/presentation/screens/home/student_exam_results_student%20.dart';
+import 'package:school_management_system/presentation/screens/home/student_notifications_page.dart';
 import 'package:school_management_system/presentation/screens/home/teachers_list_page_student.dart';
 
 final List<String> tabs = [
@@ -34,19 +36,24 @@ final List<Widget> pages = [
   MedalsPage(studentId: 4),
   ComplaintPage(studentId: 3),
 ];
-final List<Map<String, dynamic>> drawerItems = [
+List<Map<String, dynamic>> getDrawerItems(BuildContext context) => [
   {
-    'icon': Icons.home,
-    'title': 'الصفحة الرئيسية',
+    'icon': Icons.person,
+    'title': 'الملف الشخصي',
     'onTap': () {
-      // تنفيذ أمر الصفحة الرئيسية
+      Navigator.of(
+        context,
+      ).pushNamedAndRemoveUntil('/StudentProfilePage', (route) => false);
     },
   },
   {
     'icon': Icons.settings,
     'title': 'الإعدادات',
-    'onTap': () {
-      // تنفيذ أمر الإعدادات
+    'onTap': () async {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SettingsPage()),
+      );
     },
   },
   {
@@ -54,9 +61,22 @@ final List<Map<String, dynamic>> drawerItems = [
     'title': 'تسجيل الخروج',
     'onTap': () {
       // تنفيذ أمر تسجيل الخروج
+      Navigator.of(context).pushNamedAndRemoveUntil('/Login', (route) => false);
+    },
+  },
+
+  {
+    'icon': Icons.notifications,
+    'title': 'الإشعارات',
+    'onTap': () async {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => StudentNotificationsPage()),
+      );
     },
   },
 ];
+
 final List<Announcement> announcements = [
   Announcement(
     title: 'امتحان منتصف الفصل',

@@ -7,23 +7,23 @@ class MedalsCubit extends Cubit<MedalsState> {
 
   Future<void> fetchMedals(int studentId) async {
     emit(MedalsLoading());
-
     try {
-      // محاكاة الاتصال بـ API
-      await Future.delayed(Duration(seconds: 1));
+      // TODO: ربط مع API لاحقًا
+      // final response = await http.get(Uri.parse('API_URL'));
+      // final data = jsonDecode(response.body);
 
-      // هذا مجرد مثال، قم بربطه بـ API حقيقي
+      await Future.delayed(Duration(seconds: 1));
       List<Medal> medals = [
         Medal(
           title: "الطالب المثالي",
           description: "حصلت على أعلى تقييم سلوكي",
-          imageUrl: "appbar_image.png",
+          imageUrl: "https://cdn-icons-png.flaticon.com/512/2583/2583399.png",
           count: 1,
         ),
         Medal(
           title: "الطالب المثالي",
           description: "حصلت على أعلى تقييم سلوكي",
-          imageUrl: "appbar_image.png",
+          imageUrl: "https://cdn-icons-png.flaticon.com/512/2583/2583399.png",
           count: 2,
         ),
       ];
@@ -33,7 +33,7 @@ class MedalsCubit extends Cubit<MedalsState> {
       } else {
         emit(MedalsLoaded(medals));
       }
-    } catch (e) {
+    } catch (_) {
       emit(MedalsError("فشل في تحميل الأوسمة"));
     }
   }

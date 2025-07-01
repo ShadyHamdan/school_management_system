@@ -1,9 +1,8 @@
+// State: Teacher Evaluation
 import 'package:equatable/equatable.dart';
 
-// حالات التقييم
 abstract class TeacherEvaluationState extends Equatable {
   const TeacherEvaluationState();
-
   @override
   List<Object?> get props => [];
 }

@@ -8,6 +8,8 @@ class DrawerHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final drawerItems = getDrawerItems(context);
+
     return Drawer(
       shadowColor: whiteColor,
       child: Stack(
@@ -24,8 +26,7 @@ class DrawerHome extends StatelessWidget {
           ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
-              DrawerHeader(
-                // decoration: BoxDecoration(color: cyanColor),
+              const DrawerHeader(
                 child: Text(
                   'قائمة الطالب',
                   style: TextStyle(color: Colors.white, fontSize: 24),
@@ -35,8 +36,11 @@ class DrawerHome extends StatelessWidget {
                 children: List.generate(drawerItems.length, (index) {
                   final item = drawerItems[index];
                   return ListTile(
-                    leading: Icon(item['icon']),
-                    title: Text(item['title']),
+                    leading: Icon(item['icon'], color: Colors.white),
+                    title: Text(
+                      item['title'],
+                      style: const TextStyle(color: Colors.white),
+                    ),
                     onTap: item['onTap'],
                   );
                 }),
